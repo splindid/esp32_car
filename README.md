@@ -1,2 +1,3 @@
 # esp32_car
-esp32结合platformio初次尝试来实现基础控制功能
+esp32结合platformio初次尝试来实现基础控制功能。
+最近对于esp32刚起步对于最近学习的串口，tcp通信，freeRtos以及pwm波进行了总结得到了这个杂糅车。
