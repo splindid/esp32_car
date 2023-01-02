@@ -1,17 +1,18 @@
 #include <Arduino.h>
 #include <WiFi.h>
-const char *SSID ="splendid";
+const char *SSID ="splendid";//填写你对应的用户名和密码
 const char *password="qh2021dengwo";
-const int Motor_INT1=5;
+const int Motor_INT1=5;///暂定的两个轮子的转向控制引脚
 const int Motor_INT2=4;
-const  IPAddress  serivalIP(192,168,164,92);
-uint16_t serivalPort=1234;
+//运用tcp通信来控制小车的运动
+const  IPAddress  serivalIP(192,168,164,92);//tcp的地址
+uint16_t serivalPort=1234;//tcp端口号，自己取的
 WiFiClient  client;
 int channel1=1,channel2=2;
 int feq=2000;
 int resolution=10;
 bool val=0;
-int fast=1023,medium=1000,low=500,stop=0;
+int fast=1023,medium=1000,low=500,stop=0;//定义转速的大小（即显示占空比）
 char control;
 void MOTOR_INIT(void)
 {
@@ -31,17 +32,17 @@ void MOTOR_CONTROL(int control)
 }
 void WiFi_init(const char *SSID,const char *password)
 {
-  WiFi.mode(WIFI_STA);
-  WiFi.setSleep(false);
-  WiFi.begin(SSID,password);
-  while(WiFi.status()!=WL_CONNECTED)
-  {
-    Serial.print(".");
-    delay(500);
-  }
-  Serial.println("WiFi connect!");
-  Serial.println(WiFi.localIP());
-  Serial.println("try to get the tcp");
+       WiFi.mode(WIFI_STA);
+       WiFi.setSleep(false);
+       WiFi.begin(SSID,password);
+       while(WiFi.status()!=WL_CONNECTED)
+       {
+         Serial.print(".");
+         delay(500);
+       }
+       Serial.println("WiFi connect!");
+       Serial.println(WiFi.localIP());
+       Serial.println("try to get the tcp");
 }
 void Project_init()
 {
